@@ -26,6 +26,13 @@ public class QuestionController {
     @Autowired
     private QuestionService service;
 
+    @GetMapping("/ping")
+    public String getPing() {    	
+    	//System.out.println(service.createQuestion("Its my question"));
+        //return questionRepository.findAll(pageable);
+    	return "Pong!";
+    }
+    
     @GetMapping("/questions")
     public Page<Question> getQuestions(Pageable pageable) {    	
     	System.out.println(service.createQuestion("Its my question"));
