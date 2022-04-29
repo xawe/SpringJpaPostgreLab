@@ -2,7 +2,10 @@ package com.example.postgresdemo.controller;
 
 import com.example.postgresdemo.exception.ResourceNotFoundException;
 import com.example.postgresdemo.model.Question;
+
 import com.example.postgresdemo.repository.QuestionRepository;
+import com.example.postgresdemo.service.QuestionService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,13 +21,29 @@ public class QuestionController {
 
     @Autowired
     private QuestionRepository questionRepository;
+    
+    //@Autowired (required=false)
+    @Autowired
+    private QuestionService service;
 
-    @GetMapping("/questions")
-    public Page<Question> getQuestions(Pageable pageable) {
-        return questionRepository.findAll(pageable);
+    @GetMapping("/ping")
+    public String getPing() {    	
+    	//System.out.println(service.createQuestion("Its my question"));
+        //return questionRepository.findAll(pageable);
+    	return "Pong!";
     }
     
-
+    @GetMapping("/questions")
+    public Page<Question> getQuestions(Pageable pageable) {    	
+    	System.out.println(service.createQuestion("Its my question"));
+        //return questionRepository.findAll(pageable);
+    	return service.findAllQuestions(pageable);
+    }
+    
+    @GetMapping("/questions/total")
+    public int getTotalQuestions() {    	
+    	return service.countTotalQuestions();
+    }
     // @GetMapping("/questions/bytitle/{title}")
     // public List<Question> getQuestionsByTitle(@PathVariable String title){
     //     return questionRepository.findByTitle(title);
