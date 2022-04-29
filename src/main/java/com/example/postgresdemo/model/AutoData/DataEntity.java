@@ -22,6 +22,17 @@ public class DataEntity extends AuditModel {
 	
 	@Column(columnDefinition = "int")
 	private Integer status;
+	
+	@Column(columnDefinition = "bigint")
+	private Long numericIdentifier;
+
+	public Long getNumericIdentifier() {
+		return numericIdentifier;
+	}
+
+	public void setNumericIdentifier(Long numericIdentifier) {
+		this.numericIdentifier = numericIdentifier;
+	}
 
 	public String getDataName() {
 		return dataName;

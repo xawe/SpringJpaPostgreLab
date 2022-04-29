@@ -49,6 +49,4 @@ public class CreateData202204272205 extends Base {
 		return q;
 	}
 	
-	
-	
 }
