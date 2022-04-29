@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.postgresdemo.DataTransfer.Base;
 import com.example.postgresdemo.injections.Foo;
-import com.example.postgresdemo.injections.Foone;
-import com.example.postgresdemo.injections.HelloImpl;
 import com.example.postgresdemo.injections.HelloProvider;
+import com.example.postgresdemo.service.datatransfer.DataTransferService;
+
 
 
 @RestController
@@ -21,6 +21,9 @@ public class FooController {
 
 	//@Autowired
 	//private List<Foo> myFoo;
+	
+	@Autowired
+	private DataTransferService dts;
 	
 	@Autowired
 	private HelloProvider hp;
@@ -57,10 +60,8 @@ public class FooController {
         
         for (Foo foo : foos) {
 			System.out.println(foo.execute());
-		}
-		
+		}		
         //return serviceListFactoryBean;
-
     	//System.out.println(service.createQuestion("Its my question"));
         //return questionRepository.findAll(pageable);
     	return "Pong!";
@@ -68,11 +69,7 @@ public class FooController {
 	
 	@GetMapping("/data")
 	public String getDataTransfer() {
-		List<Base> foos = SpringFactoriesLoader.loadFactories(Base.class, null);
-        
-        for (Base foo : foos) {
-			foo.execute();
-		}
+        dts.t();
 		return "Heeeeeeey";		
 	}
 }

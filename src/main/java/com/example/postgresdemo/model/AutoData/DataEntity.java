@@ -20,6 +20,30 @@ public class DataEntity extends AuditModel {
 	@Column(columnDefinition = "text")
 	private String description;
 	
-	@Column(columnDefinition = "boolean")
-	private Boolean status;
+	@Column(columnDefinition = "int")
+	private Integer status;
+
+	public String getDataName() {
+		return dataName;
+	}
+
+	public void setDataName(String dataName) {
+		this.dataName = dataName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 }

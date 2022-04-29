@@ -9,6 +9,10 @@ public abstract class Base {
 		
 	}
 	
+	public void rollback() {
+		
+	}
+	
 	public String getDataName() {
 		return DataName;
 	}
